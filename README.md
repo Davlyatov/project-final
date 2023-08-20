@@ -27,4 +27,5 @@
 - https://habr.com/ru/articles/259055/
 
 Список выполненных задач:
-...
+- Deleted socials (vk, yandex);
+- Added database,mail and OAuth property files;
