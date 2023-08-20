@@ -29,3 +29,4 @@
 Список выполненных задач:
 - Deleted socials (vk, yandex);
 - Added database,mail and OAuth property files;
+- Reworked com.javarush.jira.bugtracking.attachment.FileUtil#upload to nio
