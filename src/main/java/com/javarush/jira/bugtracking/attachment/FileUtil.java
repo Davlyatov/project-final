@@ -7,9 +7,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,15 +21,23 @@ public class FileUtil {
         if (multipartFile.isEmpty()) {
             throw new IllegalRequestDataException("Select a file to upload.");
         }
-
-        File dir = new File(directoryPath);
-        if (dir.exists() || dir.mkdirs()) {
-            File file = new File(directoryPath + fileName);
-            try (OutputStream outStream = Files.newOutputStream(file.toPath())) {
-                outStream.write(multipartFile.getBytes());
+        Path path = Path.of(directoryPath);
+        if (Files.exists(path) || mkdirs(path)) {
+            path = Path.of(directoryPath+fileName);
+            try  {
+                Files.newOutputStream(path).write(multipartFile.getBytes());
             } catch (IOException ex) {
                 throw new IllegalRequestDataException("Failed to upload file" + multipartFile.getOriginalFilename());
             }
+        }
+    }
+
+    public static boolean mkdirs(Path path) {
+        try {
+            Files.createDirectories(path);
+            return true;
+        } catch (Exception e){
+            return false;
         }
     }
 
