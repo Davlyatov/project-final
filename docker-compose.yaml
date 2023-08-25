@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  jira:
+    container_name: JiraRush
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres-db
+      - nginx
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db/jira
+      - SPRING_DATASOURCE_USERNAME=${DATABASE_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DATABASE_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  postgres-db:
+    image: postgres
+    container_name: postgres-db-JiraRush
+    restart: always
+    environment:
+      - POSTGRES_USER=jira
+      - POSTGRES_PASSWORD=JiraRush
+      - POSTGRES_DB=jira
+    ports:
+      - "5432:5432"
+  nginx:
+    image: nginx
+    container_name: jiraRush-nginx
+    hostname: jiraRush-nginx
+    volumes:
+      - /config/nginx.conf
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
