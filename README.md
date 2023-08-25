@@ -31,4 +31,4 @@
 - Added database,mail and OAuth property files;
 - Reworked com.javarush.jira.bugtracking.attachment.FileUtil#upload to nio;
 - added DockerFile for main server;
-- added docker-compose.yaml for main server, DB and nginx;
+- added docker-compose.yaml for main server, DB and nginx; still not working
