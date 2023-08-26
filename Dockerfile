@@ -1,4 +1,9 @@
+FROM maven
+COPY . .
+RUN mvn install -DskipTests
+
 FROM openjdk:17
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+WORKDIR /app
+COPY target/jira-1.0.jar jira-app.jar
+COPY ./resources /app/resources
+ENTRYPOINT ["java","-jar","/app/jira-app.jar"]

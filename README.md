@@ -33,5 +33,5 @@
 - Tests now work on H2;
 - Reworked com.javarush.jira.bugtracking.attachment.FileUtil#upload to nio;
 - Added DockerFile for main server;
-- Added docker-compose.yaml for main server, DB and nginx; not working
+- Added docker-compose.yaml for main server, DB and nginx;
 - Added localization for index.html and email templates;
