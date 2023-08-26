@@ -8,25 +8,20 @@ from PROFILE;
 
 delete
 from ACTIVITY;
-alter
-sequence ACTIVITY_ID_SEQ restart with 1;
+create sequence ACTIVITY_ID_SEQ;
 delete
 from TASK;
-alter
-sequence TASK_ID_SEQ restart with 1;
+create sequence TASK_ID_SEQ;
 delete
 from SPRINT;
-alter
-sequence SPRINT_ID_SEQ restart with 1;
+create sequence SPRINT_ID_SEQ;
 delete
 from PROJECT;
-alter
-sequence PROJECT_ID_SEQ restart with 1;
+create sequence PROJECT_ID_SEQ;
 
 delete
 from USERS;
-alter
-sequence USERS_ID_SEQ restart with 1;
+create sequence USERS_ID_SEQ;
 
 insert into USERS (EMAIL, PASSWORD, FIRST_NAME, LAST_NAME, DISPLAY_NAME)
 values ('user@gmail.com', '{noop}password', 'userFirstName', 'userLastName', 'userDisplayName'),
