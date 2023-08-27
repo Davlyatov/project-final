@@ -32,6 +32,7 @@
 - Added database,mail and OAuth property files;
 - Tests now work on H2;
 - Reworked com.javarush.jira.bugtracking.attachment.FileUtil#upload to nio;
+- Adding tags to the task without front;
 - Added DockerFile for main server;
 - Added docker-compose.yaml for main server, DB and nginx;
 - Added localization for index.html and email templates;
