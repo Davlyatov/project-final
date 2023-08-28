@@ -160,6 +160,7 @@ public class TaskController {
 
     @PostMapping("/{id}/tags")
     public String addTaskTag(@PathVariable("id") Long taskId, @RequestBody Set<String> tags) {
-        return "redirect:/ui/tasks/"+taskId;
+        taskService.addTags(taskId, tags);
+        return "redirect:/ui/tasks/" + taskId;
     }
 }
